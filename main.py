@@ -1,10 +1,18 @@
-with open("test.csv", "r") as csv:
-    with open("out.szk", "wb") as binary_file:
-        for line in csv:
-            data = line[:-1].split(";")
-            value_bytes = int(data[0]).to_bytes(2, byteorder='big', signed=False)
-            binary_file.write(value_bytes)
-            value_bytes = int(data[1]).to_bytes(8, byteorder='big', signed=False)
-            binary_file.write(value_bytes)
-            value_bytes = int(data[2]).to_bytes(8, byteorder='big', signed=False)
-            binary_file.write(value_bytes)
+from midiToCsv import midiToCsv
+from csvToCsv import csvToCsv
+from serialWriter import serialWriter
+from csvToBin import csvToBin
+from serialWriterBin import serialWriterBin
+import os.path
+
+def main(input):
+    name, _ = input.split(".")
+    if(not os.path.isfile(name+".szk")):
+        midiToCsv(input, "tmp.csv")
+        csvToCsv("tmp.csv", name+".csv")
+        csvToBin(name+".csv", name+".szk")
+    serialWriterBin(name+".szk")
+
+if __name__ == "__main__":
+    input = "furelise.mid"
+    main(input)

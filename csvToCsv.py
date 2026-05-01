@@ -1,10 +1,14 @@
 import csv
+
 def tempo_to_bpm(tempo_local):
     return 60000000 / tempo_local
+
 def ticks_to_milliseconds(ticks_local, bpm_local, ppq_local):
     return (60000 / bpm_local) * (ticks_local / ppq_local)
+
 def midi_note_to_frequency(midi_note):
     return 440 * 2**((midi_note - 69) / 12)
+
 def csvToCsv(input, output):
     last_start = -1
     ppq = 480
@@ -17,8 +21,12 @@ def csvToCsv(input, output):
 
                 if row[2] == ' Header':
                     ppq = int(row[5][1:])
+                    continue
+
                 if row[2] == ' Tempo':
                     bpm = tempo_to_bpm(int(row[3][1:]))
+                    continue
+
                 if row[2] == ' Note_on_c' or row[2] == ' Note_off_c':
 
                     

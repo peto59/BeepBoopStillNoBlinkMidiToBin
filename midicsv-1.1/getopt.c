@@ -73,7 +73,7 @@ int Getopt(int nargc, char *nargv[], char *ostr)
         static char     *place = EMSG;  /* option letter processing */
         static char     *lastostr = (char *) 0;
         register char   *oli;           /* option letter list index */
-        char    *index();
+        //char    *index();
 
         /* LANCE PATCH: dynamic reinitialization */
         if (ostr != lastostr) {

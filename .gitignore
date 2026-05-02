@@ -4,3 +4,5 @@ midicsv-1.1/midicsv
 midicsv-1.1/fireflies.mid
 midicsv-1.1/csvmidi
 /__pycache__
+*.szk
+*.csv

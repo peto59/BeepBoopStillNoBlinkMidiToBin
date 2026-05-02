@@ -2,7 +2,7 @@ import subprocess
 
 def midiToCsv(input, output):
     # Define the command and arguments
-    command = ["./midicsv-1.1/Midicsv.exe", input]
+    command = ["./midicsv-1.1/midicsv", input]
 
     # Redirect the output to a file
     with open(output, "w") as output_file:

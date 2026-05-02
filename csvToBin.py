@@ -6,11 +6,10 @@ def csvToBin(input, output):
                     data = line[:-1].split(",")
                 except:
                     data = line[:-1].split(";")
-                value_bytes = int(data[0]).to_bytes(2, byteorder='big', signed=False)
+
+                value_bytes = int(data[0]).to_bytes(1, byteorder='little', signed=False)
                 binary_file.write(value_bytes)
-                value_bytes = int(data[1]).to_bytes(8, byteorder='big', signed=False)
-                binary_file.write(value_bytes)
-                value_bytes = int(data[2]).to_bytes(8, byteorder='big', signed=False)
+                value_bytes = int(data[1]).to_bytes(2, byteorder='little', signed=False)
                 binary_file.write(value_bytes)
 
 
